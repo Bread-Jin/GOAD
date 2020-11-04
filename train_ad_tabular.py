@@ -11,6 +11,7 @@ def load_trans_data(args):
 
     n_train, n_dims = train_real.shape
     rots = np.random.randn(args.n_rots, n_dims, args.d_out)
+    # np.random.randn은 args.n_rots x n_dims x args.d_out의 차원을 가지고 그 원소는 표준정규분포를 따른다.
 
     print('Calculating transforms')
     x_train = np.stack([train_real.dot(rot) for rot in rots], 2)
