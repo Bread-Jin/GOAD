@@ -8,6 +8,16 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+def weights_init(m):
+    classname = m.__class__.__name__
+    if isinstance(m, nn.Linear):
+        init.xavier_normal_(m.weight, gain=np.sqrt(2.0))
+    elif classname.find('Conv') != -1:
+        init.xavier_normal_(m.weight, gain=np.sqrt(2.0))
+    elif classname.find('Linear') != -1:
+        init.eye_(m.weight)
+    elif classname.find('Emb') != -1:
+        init.normal(m.weight, mean=0, std=0.01)
 
 class BasicBlock(nn.Module):
     expansion = 1
