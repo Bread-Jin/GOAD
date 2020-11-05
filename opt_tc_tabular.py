@@ -35,9 +35,9 @@ class TransClassifierTabular():
 
         self.n_epoch = args.n_epoch
         if args.dataset == "thyroid" or args.dataset == "arrhythmia":
-            self.netC = model.ResNet18.cuda()
+            self.netC = model.ResNet18().cuda()
         else:
-            self.netC = model.ResNet18.cuda()
+            self.netC = model.ResNet18().cuda()
         model.weights_init(self.netC)
         self.optimizerC = optim.Adam(self.netC.parameters(), lr=args.lr, betas=(0.5, 0.999))
 
