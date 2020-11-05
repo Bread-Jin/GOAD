@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import fcnet as model
+import resnet18 as model
 from sklearn.metrics import precision_recall_fscore_support as prf
 
 def tc_loss(zs, m):
@@ -35,9 +35,9 @@ class TransClassifierTabular():
 
         self.n_epoch = args.n_epoch
         if args.dataset == "thyroid" or args.dataset == "arrhythmia":
-            self.netC = model.netC1(self.d_out, self.ndf, self.n_rots).cuda()
+            self.netC = model.ResNet18.cuda()
         else:
-            self.netC = model.netC5(self.d_out, self.ndf, self.n_rots).cuda()
+            self.netC = model.ResNet18.cuda()
         model.weights_init(self.netC)
         self.optimizerC = optim.Adam(self.netC.parameters(), lr=args.lr, betas=(0.5, 0.999))
 
