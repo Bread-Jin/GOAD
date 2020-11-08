@@ -53,4 +53,6 @@ class netC1(nn.Module):
     def forward(self, input):
         tc = self.trunk(input)
         ce = self.head(tc)
+        print (tc.shape)
+        print (ce.shape)
         return tc, ce
