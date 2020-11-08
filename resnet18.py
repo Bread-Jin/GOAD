@@ -83,8 +83,9 @@ class ResNet(nn.Module):
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNet, self).__init__()
         self.in_planes = 64
-        self.conv1 = nn.Conv2d(32, 64, kernel_size=3,
-                               stride=1, padding=1, bias=False)
+        self.conv1 = nn.Conv1d(32, 64, kernel_size=1, bias=False)        
+#        self.conv1 = nn.Conv2d(32, 64, kernel_size=3,
+#                               stride=1, padding=1, bias=False)
 #        self.conv1 = nn.Conv2d(3, 64, kernel_size=3,
 #                               stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
